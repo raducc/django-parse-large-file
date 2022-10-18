@@ -36,8 +36,22 @@ class RandomGenerator:
         base_email = cls.get_random_text(alphabet, length)
         return f"{base_email}@gmail.com"
 
-    def get_username(self):
-        pass
+    @classmethod
+    def get_username(cls):
+        alphabet = string.ascii_lowercase
+        length = random.randint(4, 20)
+        return cls.get_random_text(alphabet, length)
+
+    @classmethod
+    def get_firstname(cls):
+        alphabet = string.ascii_lowercase
+        length = random.randint(4, 10)
+        name = cls.get_random_text(alphabet, length)
+        return name.capitalize()
+
+    @staticmethod
+    def get_age():
+        return random.randint(10, 50)
 
     @staticmethod
     def get_date():
@@ -60,6 +74,14 @@ class Command(BaseCommand):
             csv_file, delimiter=',', quotechar='"', quoting=unicodecsv.QUOTE_ALL
         )
         for _ in pbar(range(options['lines'])):
-            csv_file_writer.writerow([RandomGenerator.get_date(), RandomGenerator.get_email()])
+            csv_file_writer.writerow(
+                [
+                    RandomGenerator.get_date(),
+                    RandomGenerator.get_email(),
+                    RandomGenerator.get_username(),
+                    RandomGenerator.get_firstname(),
+                    RandomGenerator.get_age(),
+                ]
+            )
 
         csv_file.close()
