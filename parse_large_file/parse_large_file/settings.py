@@ -76,8 +76,14 @@ WSGI_APPLICATION = 'parse_large_file.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'large_file',
+        'USER': 'large_file',
+        'PASSWORD': 'password123',
+        'HOST': 'mysql',
+        'PORT': '3306',
+        'CONN_MAX_AGE': 7200,
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 

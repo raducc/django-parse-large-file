@@ -2,7 +2,7 @@
 name = "parse-large-file"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Radu Cancel <radu.cancel@gmail.com>"]
 readme = "README.md"
 packages = [{include = "parse_large_file"}]
 
@@ -12,6 +12,7 @@ Django = "^4.1.2"
 celery = "^5.2.7"
 unicodecsv = "^0.14.1"
 progressbar = "^2.5"
+mysqlclient = "^2.1.1"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.9"

@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+  large_file_docker:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    environment:
+      DB_HOST: mysql
+      DB_NAME: large_file
+      DB_USER: large_file
+      DB_PASSWORD: password123
+    volumes:
+      - ./parse_large_file:/app
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    networks:
+      - mysqlnet
+#    command: python -Wd manage.py runserver 0.0.0.0:8000
+    tty: true
+
+  mysql:
+    container_name: large_file_mysql
+    image: mysql:8
+    volumes:
+      - mysql-data:/val/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password123
+      - MYSQL_DATABASE=large_file
+      - MYSQL_USER=large_file
+      - MYSQL_PASSWORD=password123
+    networks:
+      - mysqlnet
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  mysqlnet:
+    driver: bridge
