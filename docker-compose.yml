@@ -16,10 +16,15 @@ services:
       - ./parse_large_file:/app
     links:
       - mysql
+      - rabbitmq
+      - redis
+#      - memcached
     depends_on:
       - mysql
     networks:
       - mysqlnet
+      - redisnet
+      - rabbitmqnet
 #    command: python -Wd manage.py runserver 0.0.0.0:8000
     tty: true
 
@@ -38,10 +43,35 @@ services:
     networks:
       - mysqlnet
 
+  rabbitmq:
+    image: rabbitmq:3.7.8
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password123
+      - "TZ=UTC"
+      # - RABBITMQ_HIPE_COMPILE=1
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - rabbitmqnet
+
+  redis:
+    image: redis:3.2.8
+    hostname: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - redisnet
+
 volumes:
   mysql-data:
     driver: local
 
 networks:
   mysqlnet:
+    driver: bridge
+  rabbitmqnet:
+    driver: bridge
+  redisnet:
     driver: bridge

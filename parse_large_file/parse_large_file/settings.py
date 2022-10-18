@@ -88,6 +88,28 @@ DATABASES = {
 }
 
 
+RABBITMQ_CONFIG = {
+    'HOST': 'rabbitmq',
+    'PORT': '5672',
+    'MANAGEMENT_PORT': '15672',
+    'USER': 'admin',
+    'PASSWORD': 'password123',
+    'VIRTUAL_HOST': 'large_file',
+}
+
+CELERY_TIMEZONE = "UTC"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = 'pyamqp://{USER}:{PASSWORD}@{HOST}:{PORT}/{VIRTUAL_HOST}'.format(
+    **RABBITMQ_CONFIG
+)
+"""
+rabbitmqctl add_vhost large_file
+rabbitmqctl add_user admin password123
+rabbitmqctl set_permissions -p large_file admin ".*" ".*" ".*"
+rabbitmqctl set_user_tags admin administrator
+"""
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
