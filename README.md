@@ -12,28 +12,33 @@ To stop docker-compose run
 ```
 make down
 ```
-
+Testing
+```
+make test
+```
+Manual Testing
+```
+make generate_file
+make celery_worker
+make shell
+  # in shell: from parse_large_file.tasks import import_file_task; import_file_task.apply_async()
+make runserver
+  # open http://127.0.0.1:8000/customers-age/
+  # open http://127.0.0.1:8000/customers/
+```
 Other commands
 
 ```
-make celery_worker
 make bash
-make shell
 make migrations
-make runserver
-make test
 ```
 
 ToDo
 
 - unit test
-  - test util with random file
-    - test that entries are created in db
   - test api results
+  - test task with celery always eager true
 
-- bottleneck on writing to the db. Possible solutions:
-  - bulk update or create
-  - spawn tasks to write to db
 
 - move rabbitmq initial config to dockerfile
   - add secrets file

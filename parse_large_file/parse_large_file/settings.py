@@ -112,10 +112,20 @@ rabbitmqctl set_permissions -p large_file admin ".*" ".*" ".*"
 rabbitmqctl set_user_tags admin administrator
 """
 
+# CELERY_REDIS_HOST = 'redis'
+# CELERY_REDIS_PORT = 6379
+# CELERY_REDIS_DB = 0
+# CELERY_RESULT_BACKEND = 'redis'
+# CELERY_RESULT_PASSWORD = "C@pV@lue2016"
+# REDIS_CONNECT_RETRY = True
+# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
 }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

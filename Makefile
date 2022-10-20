@@ -29,7 +29,10 @@ celery_worker:
 	docker exec -t backend celery -A parse_large_file worker -l info
 
 runserver:
-	docker exec -t backend python manage.py 0.0.0.0:8000
+	docker exec -t backend python manage.py runserver 0.0.0.0:8000
 
 test:
 	docker exec -t backend python manage.py test --keepdb
+
+generate_file:
+	docker exec -t backend python manage.py generate_file --lines 10000
