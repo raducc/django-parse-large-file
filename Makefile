@@ -13,11 +13,17 @@ up:
 down:
 	docker-compose down
 
-shell:
+bash:
 	docker exec -i -t backend bash
 
+shell:
+	docker exec -i -t backend python manage.py shell
+
 migrations:
-	docker exec -t backend python manage.py migrate makemigrations
+	docker exec -t backend python manage.py makemigrations
 
 migrate:
 	docker exec -t backend python manage.py migrate
+
+celery_worker:
+	docker exec -t backend celery -A parse_large_file worker -l info

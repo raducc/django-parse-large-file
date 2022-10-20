@@ -76,8 +76,8 @@ class Command(BaseCommand):
         for _ in pbar(range(options['lines'])):
             csv_file_writer.writerow(
                 [
-                    RandomGenerator.get_date(),
                     RandomGenerator.get_email(),
+                    RandomGenerator.get_date(),
                     RandomGenerator.get_username(),
                     RandomGenerator.get_firstname(),
                     RandomGenerator.get_age(),
