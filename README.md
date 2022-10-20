@@ -1,4 +1,4 @@
-todo
+ToDo
 
 - create model
   - SampleUsers
@@ -20,5 +20,7 @@ todo
   - bulk update or create
   - spawn tasks to write to db
 
+- move rabbitmq initial config to dockerfile
+  - add secrets file
 -------
 - Add secrets file

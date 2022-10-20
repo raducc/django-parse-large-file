@@ -32,7 +32,10 @@ services:
     container_name: large_file_mysql
     image: mysql:8
     volumes:
-      - mysql-data:/val/lib/mysql
+      - ./mysql_data/local_datadir:/var/lib/mysql
+      - ./mysql_data/local_logs:/home/logs
+      - ./mysql_data/local_tmp:/tmp
+      - ./mysql_data/my.cnf:/etc/mysql/my.cnf
     ports:
       - "3306:3306"
     environment:
@@ -44,6 +47,7 @@ services:
       - mysqlnet
 
   rabbitmq:
+    container_name: rabbitmq
     image: rabbitmq:3.7.8
     environment:
       - RABBITMQ_DEFAULT_USER=admin
