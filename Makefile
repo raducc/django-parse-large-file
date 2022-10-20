@@ -31,6 +31,9 @@ celery_worker:
 runserver:
 	docker exec -t backend python manage.py runserver 0.0.0.0:8000
 
+test_new_db:
+	docker exec -i -t backend python manage.py test
+
 test:
 	docker exec -t backend python manage.py test --keepdb
 

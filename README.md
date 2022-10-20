@@ -31,6 +31,7 @@ Other commands
 ```
 make bash
 make migrations
+make test_new_db
 ```
 
 ToDo

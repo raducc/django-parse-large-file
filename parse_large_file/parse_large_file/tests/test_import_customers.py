@@ -9,7 +9,7 @@ from parse_large_file.utils import import_customers_from_file, batch_import_cust
 class CustomerImportTestCase(TestCase):
     def setUp(self) -> None:
         assets_path = os.path.join(settings.PROJECT_ROOT, 'parse_large_file', 'tests', 'assets')
-        self.csv_file_path = file_path = os.path.join(assets_path, 'customer_import.csv')
+        self.csv_file_path = os.path.join(assets_path, 'customer_import.csv')
 
     def test_import_customers_from_file(self):
         from parse_large_file.models import Customer
