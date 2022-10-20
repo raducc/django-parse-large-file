@@ -21,6 +21,7 @@ make bash
 make shell
 make migrations
 make runserver
+make test
 ```
 
 ToDo

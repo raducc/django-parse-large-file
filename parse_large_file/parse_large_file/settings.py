@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -71,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'parse_large_file.wsgi.application'
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -79,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'large_file',
-        'USER': 'large_file',
+        # 'USER': 'large_file',  # quick hack - unit tests needs access to create db
         'PASSWORD': 'password123',
         'HOST': 'mysql',
         'PORT': '3306',
