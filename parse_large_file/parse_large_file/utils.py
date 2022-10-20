@@ -15,8 +15,8 @@ def save_customer(entry):
     )
 
 
-def import_customers_from_file(filename):
-    with open(filename, 'rb') as fh:
+def import_customers_from_file(file_path):
+    with open(file_path, 'rb') as fh:
         reader = unicodecsv.reader(fh, delimiter=',', quotechar='"')
         for line in reader:
             save_customer(line)

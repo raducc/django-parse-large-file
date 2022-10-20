@@ -1,15 +1,29 @@
-ToDo
+How to use
+  
+Ensure `docker` is running then run the following command in terminal
+```
+make build
+make up
+make init_rabbitmq
+make migrate
+```
 
-- create model
-  - SampleUsers
-    - email - unique, not null
-    - age
-    - added_at
-    - first_name
-    - username
-- create api
-  - get count user group by age
-  - get user order by added_at
+To stop docker-compose run
+```
+make down
+```
+
+Other commands
+
+```
+make celery_worker
+make bash
+make shell
+make migrations
+make runserver
+```
+
+ToDo
 
 - unit test
   - test util with random file
@@ -23,4 +37,6 @@ ToDo
 - move rabbitmq initial config to dockerfile
   - add secrets file
 -------
+- add django SECRET_KEY to env
 - Add secrets file
+- Update mysql user

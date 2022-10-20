@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'parse_large_file',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -110,6 +111,11 @@ rabbitmqctl set_permissions -p large_file admin ".*" ".*" ".*"
 rabbitmqctl set_user_tags admin administrator
 """
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

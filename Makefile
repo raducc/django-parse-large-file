@@ -27,3 +27,6 @@ migrate:
 
 celery_worker:
 	docker exec -t backend celery -A parse_large_file worker -l info
+
+runserver:
+	docker exec -t backend python manage.py 0.0.0.0:8000
