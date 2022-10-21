@@ -105,20 +105,6 @@ CELERY_TASK_TIME_LIMIT = None
 CELERY_BROKER_URL = 'pyamqp://{USER}:{PASSWORD}@{HOST}:{PORT}/{VIRTUAL_HOST}'.format(
     **RABBITMQ_CONFIG
 )
-"""
-rabbitmqctl add_vhost large_file
-rabbitmqctl add_user admin password123
-rabbitmqctl set_permissions -p large_file admin ".*" ".*" ".*"
-rabbitmqctl set_user_tags admin administrator
-"""
-
-# CELERY_REDIS_HOST = 'redis'
-# CELERY_REDIS_PORT = 6379
-# CELERY_REDIS_DB = 0
-# CELERY_RESULT_BACKEND = 'redis'
-# CELERY_RESULT_PASSWORD = "C@pV@lue2016"
-# REDIS_CONNECT_RETRY = True
-# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
 
 
 REST_FRAMEWORK = {
