@@ -37,13 +37,15 @@ make test_new_db
 ToDo
 
 - unit test
-  - test api results
   - test task with celery always eager true
 
+- functionality
+  - create bulk update or create instead of using bulk_create (if needed as requirement)
+  - add auth back for API requests
 
 - move rabbitmq initial config to dockerfile
   - add secrets file
 -------
 - add django SECRET_KEY to env
 - Add secrets file
-- Update mysql user
+- Update mysql user for test db

@@ -19,7 +19,6 @@ class CustomerAgeTestCase(TestCase):
         resp_json = response.json()
         self.assertEqual(resp_json['count'], 3)
 
-        ages = response.json()['results']
-        for entry in ages:
-            if entry['age'] == 15:
-                self.assertEqual(entry['total'], 2)
+        result = {item['age']: item['total'] for item in response.json()['results']}
+        expected_result = {15: 2, 28: 1, 43: 1}
+        self.assertEqual(result, expected_result)
